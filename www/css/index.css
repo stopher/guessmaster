@@ -103,7 +103,13 @@ body {
   margin:100px auto;
 }
 
+.gameboard {
+
+    z-index: 3;
+}
 .preloader {
+    position: absolute;
+    top: 0px;
     opacity: 0;
     left:0;
     right:0;
@@ -152,6 +158,8 @@ body {
 }
 
 .guessbtn {
+
+    z-index: 3;
     width: 90%;
     height: 60px;
     -moz-border-radius: 15px; 
@@ -160,6 +168,7 @@ body {
     background: #61B4CF;
     display: inline-block;
     margin: 15px;    
+    opacity: 0;
 }
 
 .guessbtn div {
@@ -177,7 +186,7 @@ body {
 }
 
 .highscorelist {
-    display: none;
+    display: none;  
 }
 
 .points {

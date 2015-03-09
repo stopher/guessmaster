@@ -56,21 +56,36 @@ var app = {
         console.log('Received Event: ' + id);
 
         if(id === 'deviceready') {
-            console.log(app);
-            console.log("..");
-            console.log(this);
             app.initializeApp();
         }
 
     },
     resetApp: function() {
-        $("body").removeClass("win");
-        $("body").removeClass("lose");
-    },
+      
+      $(".number div").each(function(idx, elt) {
+        var num = getNumber(1,99);
+        $(elt).html(num);
+      });
 
+    },
     submitGame: function() {
+
+        var selected = $(".number[data-id=1].active div");
+        var notSelected = $(".number:not(.active) div");
+
+        $(".number[data-id=1] div").val();
+
+
+
+        var doneCallback = function(response) {
+            console.log(response);
+            $(".feedback div").transition({ opacity: 1, duration: 500 }).transition({ opacity: 0 });
+            $(".preloader").transition({opacity:0});
+            $(".gameboard").transition({opacity:1, y:'0px'});
+        };
         // do ajax
-        $(".feedback div").transition({ opacity: 1, duration: 500 }).transition({ opacity: 0 });
+        Datastore.saveGuess({ "uuid": uuid, "selectedVal": parseInt(selected.html()), "val2": parseInt(notSelected[0].html()), "val3": parseInt(notSelected[1].html())}, doneCallback);
+
     },
     initializeApp: function() {
         
@@ -84,9 +99,9 @@ var app = {
         $(".number").on("click", function() {
             $(this).transition({ scale: 1.5 }).transition({ scale: 1.0 }, function() {
                 $(".number").removeClass("active");
-                $(this).addClass("active");
+                $(this).addClass("active");                
+                $(".guessbtn").transition({opacity:1});
             });
-
         });
 
         $(".guessbtn").on("click", function() {
@@ -96,10 +111,15 @@ var app = {
                 rotateY: '180deg'
             }, function() {
                 $(this).addClass("active");
+                $(".gameboard").transition({opacity:0, y:'-300px'});
+                $(".preloader").transition({opacity:1});
                 app.submitGame();
             });
 
         });
+
+        Datastore.init();
+        app.resetApp();
 
         document.addEventListener('touchmove', function(e) { e.preventDefault(); }, false);
     }
