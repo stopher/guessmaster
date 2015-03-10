@@ -109,7 +109,7 @@ body {
 }
 .preloader {
     position: absolute;
-    top: 0px;
+    top: -500px;
     opacity: 0;
     left:0;
     right:0;
@@ -127,6 +127,7 @@ body {
     background: #06799F;
     display: inline-block;
     margin: 15px;
+    z-index: 4;
 }
 
 .number:after {
