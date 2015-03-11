@@ -155,7 +155,7 @@ body {
 }
 
 .number.active div {
-    color: #FFA240;
+    color: #FCE050;
 }
 
 .guessbtn {
@@ -183,7 +183,7 @@ body {
 }
 
 .guessbtn.active div {
-    color: #FFA240;
+    color: #FCE050;
 }
 
 .highscorelist {
@@ -195,7 +195,22 @@ body {
     top: 10px;
     right: 10px;
     font-size: 30px;
+    font-family: "Chewy";   
+    color: #006699; 
+}
+
+.points div, .combo div {
+    display: inline-block;
+}
+
+.combo {
+    position: fixed;
+    bottom: 40px;
+    right: 20px;
+    font-size: 30px;
     font-family: "Chewy";
+    color: #C4DBE7;
+    display: inline-block;
 }
 
 .feedback {
@@ -207,4 +222,21 @@ body {
     font-family: "Chewy";
     color: white;
     opacity: 0;
+}
+
+.cnum {
+    color: #FCE050;
+}
+
+.pnum {
+    color: #aaffaa;
+}
+
+.timeline {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    background: #CFB5B5;
+    height: 8px;
 }

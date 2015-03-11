@@ -62,19 +62,26 @@ var app = {
     },
     resetApp: function() {
       
-      $(".number div").each(function(idx, elt) {
-        var num = getNumber(1,99);
-        $(elt).html(num);
-      });
+        var numbers = [];
+        $(".number div").each(function(idx, elt) {
+            var num = getNumber(1,99);
+            if(numbers.indexOf(num) > -1) {
+                num = getNumber(1,99);
+            }
+            numbers.push(num);
+            $(elt).html(num);            
+        });
 
-      $(".number").removeClass("active");
-      $(".guessbtn").addClass("active");
-      $(".guessbtn").transition({
+        $(".number").removeClass("active");
+        $(".guessbtn").addClass("active");
+        $(".guessbtn").transition({
             perspective: '200px',
-            rotateY: '0deg'
+            y: '0px'
         }, function() {
             View.openGui();
         });
+
+      
 
     },
     nextGame: function() {
@@ -90,9 +97,10 @@ var app = {
 
         var doneCallback = function(response) {
 
+            var win = false;
             if(parseInt(response.points) > 0) {
-                $(".feedback div").html("Correct!")
-                $(".points div").html(response.totalPoints);
+                $(".feedback div").html("Correct!")                
+                win = true;
             } else {
                 $(".feedback div").html("Sorry!")
             }
@@ -100,6 +108,15 @@ var app = {
             $(".preloader").transition({opacity:0, y:'-500px', duration: 500},function() {
                 $(".guessbtn").transition({opacity:0});
                 $(".feedback div").transition({ opacity: 1, duration: 500 }).transition({ opacity: 0 }, app.nextGame);
+                $(".points div").html(response.totalPoints);
+
+                if(win) {
+                    $(".points div").transition({scale:2}).transition({scale:1});
+                    $(".combo div").html(""+response.winsInARow);
+                    $(".combo div").transition({scale:response.winsInARow});
+                } else {
+                    $(".combo div").html(""+0).transition({scale:1})
+                }
             });
             
         };
@@ -144,7 +161,8 @@ var app = {
             View.lockGuess();
             $(".guessbtn").transition({
                 perspective: '200px',
-                rotateY: '180deg'
+                y: '180px',
+                opacity: 0
             }, function() {
                 $(this).addClass("active");
                 $(".gameboard").transition({opacity:0, y:'-300px'});
@@ -154,6 +172,24 @@ var app = {
             });
 
         });
+
+        var timeToDie = 200;
+        setInterval(function() {
+
+            var point = parseInt($(".points div").html());
+            if (point >= 1) {        
+                point = point -1;
+                $(".points div").html(""+point);
+            }
+
+            if(timeToDie%2 == 0) {            
+                $(".timeline").transition({ width: timeToDie/2+"%"});
+            }
+            timeToDie = timeToDie -1;
+            if(timeToDie < 1) {
+                // TODO GAME ENDS, HIGHSCORE AND PUNCH NAME
+            }
+        }, 500);
 
         Datastore.init();
         app.resetApp();
