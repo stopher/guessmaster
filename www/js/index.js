@@ -173,6 +173,13 @@ var app = {
 
         });
 
+        $(".highscore").on("click", function() {
+            $(".highscorelist").show();
+        });
+        $(".close").on("click", function() {
+            $(".highscorelist").hide();
+        });
+
         var timeToDie = 200;
         setInterval(function() {
 
