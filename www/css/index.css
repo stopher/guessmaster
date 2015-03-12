@@ -158,6 +158,29 @@ body {
     color: #FCE050;
 }
 
+.restartbtn {
+    z-index: 3;
+    width: 90%;
+    height: 60px;
+    -moz-border-radius: 15px; 
+    -webkit-border-radius: 15px; 
+    border-radius: 15px;
+    background: #61B4CF;
+    display: inline-block;
+    margin: 15px;    
+    opacity: 0;
+}
+.restartbtn div {
+    float:left;
+    width:100%;    
+    line-height:60px;
+    text-align:center;
+    color:white;
+    font-size: 40px;
+    font-family: 'Chewy', cursive;
+}
+
+
 .guessbtn {
 
     z-index: 3;
@@ -195,6 +218,35 @@ body {
     z-index: 6;
     position: absolute;
     overflow: hidden;
+}
+
+.submitscore {
+    display: none;
+    width: 100%;
+    height:100%;
+    background: rgba(33,33,33,0.8);
+    color: #ffffff;
+    z-index: 6;
+    position: absolute;
+    overflow: hidden;
+}
+
+.gameover {
+    display: none;
+    width: 100%;
+    height:100%;
+    background: rgba(33,33,33,0.5);
+    color: #ffffff;
+    z-index: 6;
+    position: absolute;
+    overflow: hidden;   
+}
+.scoreheader {
+    font-family: 'Chewy', cursive;
+    font-size: 30px;
+    text-align: center;
+    padding: 30px;
+    color: #fefefe;
 }
 
 .points {
@@ -312,3 +364,4 @@ body {
     overflow: auto;
     max-height: 480px;
 }
+

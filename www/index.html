@@ -32,6 +32,20 @@
     </head>
     <body>
 
+        <div class="gameover">        
+            <div class="scoreheader">Ouch!</div>
+            <p>Try to guess more numbers before the time runs out</p>
+            <div class="restartbtn"><div></div></div>
+        </div>
+
+        <div class="submitscore">        
+            <div class="scoreheader">Great!</div>
+            <p>Please enter your name to get on the wall of fame!</p>
+            <form><input type="text"></input></form>
+            <div class="submit"></div>
+            <div class="restartbtn hidden"><div></div></div>
+        </div>
+
         <div class="highscorelist">
             <div class="close"><i class="fa fa-times fa-4x"></i></div>
             <div class="topscoreheader">Hall of fame</div>
@@ -105,6 +119,7 @@
         <script type="text/javascript" src="js/spritespinner.js"></script>
         <script type="text/javascript" src="js/View.js"></script>
         <script type="text/javascript" src="js/Datastore.js"></script>
+        <script type="text/javascript" src="js/GameCenter.js"></script>
         <script type="text/javascript" src="js/utils.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
         <script type="text/javascript">

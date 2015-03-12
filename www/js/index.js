@@ -80,9 +80,6 @@ var app = {
         }, function() {
             View.openGui();
         });
-
-      
-
     },
     nextGame: function() {
 
@@ -156,7 +153,6 @@ var app = {
             if(View.isGuessLocked() || View.isLocked()) {
                 return false;
             }
-
             View.lockGui();
             View.lockGuess();
             $(".guessbtn").transition({
@@ -170,11 +166,11 @@ var app = {
 
                 app.submitGame();
             });
-
         });
 
         $(".highscore").on("click", function() {
             $(".highscorelist").show();
+            GameCenter.showLeaderBoard();
         });
         $(".close").on("click", function() {
             $(".highscorelist").hide();
@@ -200,6 +196,9 @@ var app = {
 
         Datastore.init();
         app.resetApp();
+
+        GameCenter.authUser();
+
 
         document.addEventListener('touchmove', function(e) { e.preventDefault(); }, false);
     }
