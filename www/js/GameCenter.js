@@ -1,6 +1,6 @@
 var GameCenter = (function() {
 
-	var boardName = "no.olaussen.software.uberluck.board1",
+	boardName = "no.olaussen.software.uberluck.board1",
 	me = {};
 
 	me.showLeaderBoard = function() {
@@ -39,6 +39,6 @@ var GameCenter = (function() {
         };  
 
 		gamecenter.auth(successCallback, failureCallback);
-	},
+	};
 	return me;
 }());
