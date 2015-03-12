@@ -104,9 +104,9 @@ body {
 }
 
 .gameboard {
-
     z-index: 3;
 }
+
 .preloader {
     position: absolute;
     top: -500px;
@@ -142,6 +142,16 @@ body {
     border-radius: 50%;
     border-color: #ffffff;
 }
+
+.number:active {
+    background: #36a9cF;
+}
+.number:hover {
+    background: #36a9cF;
+}
+
+
+
 .number div {
     float:left;
     width:100%;
@@ -160,7 +170,7 @@ body {
 
 .restartbtn {
     z-index: 3;
-    width: 90%;
+    width: 220px;
     height: 60px;
     -moz-border-radius: 15px; 
     -webkit-border-radius: 15px; 
@@ -168,21 +178,28 @@ body {
     background: #61B4CF;
     display: inline-block;
     margin: 15px;    
-    opacity: 0;
+    opacity: 1;
+    margin: 0px auto;
 }
+
 .restartbtn div {
     float:left;
     width:100%;    
     line-height:60px;
     text-align:center;
     color:white;
-    font-size: 40px;
+    font-size: 30px;
     font-family: 'Chewy', cursive;
 }
 
+.startbtn {
+    line-height:60px;
+    text-align:center;
+    color:white;
+    font-size: 40px;
+}
 
 .guessbtn {
-
     z-index: 3;
     width: 90%;
     height: 60px;
@@ -196,6 +213,29 @@ body {
 }
 
 .guessbtn div {
+    float:left;
+    width:100%;    
+    line-height:60px;
+    text-align:center;
+    color:white;
+    font-size: 40px;
+    font-family: 'Chewy', cursive;
+}
+
+.submitbtn {
+    z-index: 3;
+    width: 90%;
+    height: 60px;
+    -moz-border-radius: 15px; 
+    -webkit-border-radius: 15px; 
+    border-radius: 15px;
+    background: #61B4CF;
+    display: inline-block;
+    margin: 15px;    
+    opacity: 0;
+}
+
+.submitbtn div {
     float:left;
     width:100%;    
     line-height:60px;
@@ -220,6 +260,18 @@ body {
     overflow: hidden;
 }
 
+.introscreen {
+    display: block;
+    width: 100%;
+    height:100%;
+    background: rgba(33,33,33,0.8);
+    color: #ffffff;
+    z-index: 6;
+    position: absolute;
+    overflow: hidden;
+    text-align: center;
+}
+
 .submitscore {
     display: none;
     width: 100%;
@@ -229,6 +281,7 @@ body {
     z-index: 6;
     position: absolute;
     overflow: hidden;
+    text-align: center;
 }
 
 .gameover {
@@ -239,8 +292,10 @@ body {
     color: #ffffff;
     z-index: 6;
     position: absolute;
-    overflow: hidden;   
+    overflow: hidden;  
+    text-align: center; 
 }
+
 .scoreheader {
     font-family: 'Chewy', cursive;
     font-size: 30px;
@@ -296,8 +351,12 @@ body {
     top: 0px;
     left: 0px;
     width: 100%;
-    background: #CFB5B5;
+    background: #C4DBE7;
     height: 8px;
+}
+
+.timeline.warning {
+    background: #E7DBC4;
 }
 
 .close {
@@ -365,3 +424,10 @@ body {
     max-height: 480px;
 }
 
+input {
+    border-radius: 6px;
+    width: 200px;
+    height: 20px;
+    padding: 10px;
+    background: cornsilk;
+}

@@ -17,6 +17,7 @@
  * under the License.
  */
 var app = {
+
     // Application Constructor
     initialize: function() {
         this.bindEvents();
@@ -124,6 +125,21 @@ var app = {
         Datastore.saveGuess({ "uuid": player.uuid, "selectedVal": parseInt(selected.html()), "val2": parseInt(notSelected[0].innerHTML), "val3": parseInt(notSelected[1].innerHTML)}, doneCallback);
 
     },
+    startGame : function() {
+        View.setGamePlaying(true);
+        View.setTimeToDie(200);
+    },
+    endGame: function() {
+        if (typeof console == "object") {console.log("ending game");}
+        
+        var points = parseInt($(".points div").html());
+        if(points > 10000) {
+            $(".submitscore").show();
+        } else {
+            $(".gameover").show();
+        }
+        View.setGamePlaying(false);
+    },
     initializeApp: function() {
         
         $(".sprite-spinner").each(function(i){
@@ -170,36 +186,78 @@ var app = {
 
         $(".highscore").on("click", function() {
             $(".highscorelist").show();
-            GameCenter.showLeaderBoard();
+            //GameCenter.showLeaderBoard();
         });
+
         $(".close").on("click", function() {
             $(".highscorelist").hide();
         });
 
-        var timeToDie = 200;
+        $(".startbtn").on("click", function() {
+            $(".startbtn").transition({opacity:0, y:'300px'}, function() {
+                $(".introscreen").hide();
+                app.startGame();
+            });
+        });
+
+        $(".gameover .restartbtn").on("click", function() {
+            $(this).transition({opacity:0, y:'300px'}, function() {
+                $(".gameover").hide();
+                app.startGame();
+            });
+        });
+        $(".submitscore .restartbtn").on("click", function() {
+            $(this).transition({opacity:0, y:'300px'}, function() {
+                $(".submitscore").hide();
+                app.startGame();
+            });
+        });
+
+        $(".submitbtn").on("click", function() {
+            $(this).transition({opacity:0}, function() {
+                $(".submitscore .restartbtn").show();
+            });
+        });
+
+        
+        Datastore.init();
+        app.resetApp();
+
+
+
         setInterval(function() {
+            
+            if(!View.isGamePlaying()) {
+                return false;
+            }
 
             var point = parseInt($(".points div").html());
             if (point >= 1) {        
                 point = point -1;
                 $(".points div").html(""+point);
             }
-
+            var timeToDie = View.getTimeToDie();
+            var timeline = $(".timeline");
             if(timeToDie%2 == 0) {            
-                $(".timeline").transition({ width: timeToDie/2+"%"});
+                timeline.transition({ width: timeToDie/2+"%"});
+                if(timeToDie < 60) {
+                    timeline.addClass("warning");
+                }
             }
             timeToDie = timeToDie -1;
-            if(timeToDie < 1) {
-                // TODO GAME ENDS, HIGHSCORE AND PUNCH NAME
+            View.setTimeToDie(timeToDie);
+
+            if(View.getTimeToDie() < 1) {
+                app.endGame();
             }
         }, 500);
 
-        Datastore.init();
-        app.resetApp();
-
-        GameCenter.authUser();
-
+        //GameCenter.authUser();
 
         document.addEventListener('touchmove', function(e) { e.preventDefault(); }, false);
+        
+        if(/iP(hone|ad)/.test(window.navigator.userAgent)) {
+            document.body.addEventListener('touchstart', function() {}, false);
+        }
     }
 };

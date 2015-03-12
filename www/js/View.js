@@ -1,6 +1,8 @@
 var View = (function() {
 	lockedGui = false;
 	guessLocked = true;
+    timeToDie = 200;
+    gamePlaying = false;
 
 	me = {};
 
@@ -21,7 +23,18 @@ var View = (function() {
 	},
 	me.isGuessLocked = function() {
 		return guessLocked;
-	};
-
+	},
+	me.isGamePlaying = function() {
+		return gamePlaying;
+	},
+	me.setGamePlaying = function(value) {
+		gamePlaying = value;
+	},	
+	me.setTimeToDie = function(value) {
+		timeToDie = value;
+	},
+	me.getTimeToDie = function() {
+		return timeToDie;
+	};	
 	return me;
 }());
