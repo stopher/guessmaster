@@ -64,7 +64,6 @@ var Datastore = (function(){
 		myPlayer = player;
 	},
 	me.saveGuess = function(guess, doneCallback) {
-
     	doRequest(settings.NEW_GUESS_URL, "POST", guess, doneCallback);
 	},
 	me.fetchPlayer = function(uuid, doneCallback) {

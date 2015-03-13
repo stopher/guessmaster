@@ -49,14 +49,18 @@ body {
 
 
 
-    background-attachment:fixed;
-    font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
-    font-size:12px;
+    background-attachment:fixed;    
+    font-family: "Lato",sans-serif;
+    font-size: 16px;
     height:100%;
     margin:0px;
     padding:0px;
     text-transform:uppercase;
     width:100%;
+}
+
+p {
+    padding: 20px;
 }
 
 /* Portrait layout (default) */
@@ -372,7 +376,7 @@ body {
     width: 30px;
     height: 30px;
     position: fixed;
-    bottom: 40px;
+    bottom: 55px;
     left: 30px;
     color: #fefefe;
 }

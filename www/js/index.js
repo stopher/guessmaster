@@ -215,6 +215,9 @@ var app = {
 
         $(".submitbtn").on("click", function() {
             $(this).transition({opacity:0}, function() {
+                var player = Datastore.getMyPlayer();
+                player.name = ""+$(".submitscore input").val();
+                Datastore.savePlayer(player);
                 $(".submitscore .restartbtn").show();
             });
         });
