@@ -2,7 +2,6 @@ var Ads = (function() {
 
     var admobid = {};
     
-   
     me = {};
 
     me.showBannerTop = function() {
