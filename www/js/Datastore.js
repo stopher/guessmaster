@@ -4,8 +4,8 @@ var Datastore = (function(){
 		name: ""
 	},
 	currentGame = 0,
-	//BASE_URL = "http://217.170.201.88/",
-	BASE_URL = "http://localhost:9000/",
+	BASE_URL = "http://217.170.201.88/",
+	//BASE_URL = "http://localhost:9000/",
 	settings =  {
     
 		NEW_GUESS_URL : BASE_URL+'guess',
