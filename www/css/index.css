@@ -289,7 +289,7 @@ p {
     display: block;
     width: 100%;
     height:100%;
-    background: rgba(33,33,33,0.8);
+    background: rgba(33,33,33,0.9);
     color: #ffffff;
     z-index: 6;
     position: absolute;
@@ -412,7 +412,6 @@ p {
 }
 
 .thelist {
-
     list-style-type: none;
     margin: 0px;
     padding: 0px;
@@ -421,27 +420,37 @@ p {
     min-width: 320px;
     max-width: 640px;
     margin: 0px auto;   
-
 }
 
-.thelist li {
+.top5 {
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
+    font-family: 'Lato', sans-serif;
+    font-size: 16px;
+    min-width: 320px;
+    max-width: 640px;
+    margin: 0px auto; 
+}
+
+.thelist li, .top5 li {
     height: 30px;
     width: 100%;
     height: 100%;
 }
 
-.thelist li div {
+.thelist li div, .top5 li div {
     display: inline-block;
     padding: 5px;
     margin:5px;
 }
 
-.thelist li div.name {
+.thelist li div.name, .top5 li div.name {
     text-align: left;
     width: 50%;
 }
 
-.thelist li div.namepoints {
+.thelist li div.namepoints, .top5 li div.namepoints {
     text-align: right;
     width: 35%;
 }
