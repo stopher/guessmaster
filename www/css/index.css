@@ -173,6 +173,10 @@ p {
     color: #FCE050;
 }
 
+.number.down.active div {
+    color: #fefefe;
+}
+
 .restartbtn {
     z-index: 3;
     width: 220px;
@@ -183,7 +187,7 @@ p {
     background: #61B4CF;
     display: inline-block;
     margin: 15px;    
-    opacity: 1;
+    opacity: 0;
     margin: 0px auto;
 }
 
@@ -222,6 +226,7 @@ p {
     color: #fefefe;
 }
 
+
 .close.down, .highscore.down {
     background: none;
     color: #FCE050;
@@ -237,17 +242,22 @@ p {
     font-family: 'Chewy', cursive;
 }
 
+.guessbtn.active.down div {
+    color:white;
+}
+
 .submitbtn {
     z-index: 3;
-    width: 90%;
+    width: 220px;
     height: 60px;
     -moz-border-radius: 15px; 
     -webkit-border-radius: 15px; 
     border-radius: 15px;
     background: #61B4CF;
-    display: inline-block;
-    margin: 15px;    
-    opacity: 0;
+    display: block;
+    margin: 0px auto;    
+    margin-top: 20px;
+    opacity: 1;
 }
 
 .submitbtn div {
@@ -363,15 +373,24 @@ p {
 
 .timeline {
     position: fixed;
-    top: 0px;
+    bottom: 0px;
     left: 0px;
     width: 100%;
-    background: #C4DBE7;
+    background: #FCE050;
     height: 8px;
 }
 
+#ranking {
+    background: #FCE050;
+    font-size: 20px;
+}
+
 .timeline.warning {
-    background: #E7DBC4;
+    background: #FF6B00;
+}
+
+.timeline.ending {
+    background: #FF1B00;
 }
 
 .close {

@@ -33,8 +33,8 @@
     <body>
 
         <div class="introscreen">        
-            <div class="scoreheader">Let's play!</div>
-            <p>Try to guess more numbers before the time runs out</p>
+            <div class="scoreheader">ÜBERLUCK</div>
+            <p>Guess as many numbers you can before the time runs out</p>
             <div class="restartbtn startbtn"><div>play!</div></div>
         </div>
 
@@ -45,11 +45,10 @@
         </div>
 
         <div class="submitscore">        
-            <div class="scoreheader">Great! You reached the wall of fame!</div>
-            <p>Please enter your name to get on the wall of fame!</p>
+            <div class="scoreheader">Great! Your rank is <span id="ranking"></span>!</div>
+            <p>Please enter your name for the highscorelist!</p>
             <form><input type="text"></input></form>
             <div class="submitbtn"><div>Save!</div></div>
-            <div class="restartbtn hidden"><div>play again!</div></div>
         </div>
 
         <div class="highscorelist">
@@ -57,46 +56,7 @@
             <div class="topscoreheader">Hall of fame</div>
             <div class="listscroller">
                 <ul class="thelist">
-                    <li><div class="name">Per Jonassen</div><div class="namepoints">23019</div></li>
-                    <li><div class="name">Gier Morrr</div><div class="namepoints">13019</div></li>
-                    <li><div class="name">Jellyfish</div><div class="namepoints">13019</div></li>
-                    <li><div class="name">Mik</div><div class="namepoints">131019</div></li>
-                    <li><div class="name">Per Jonassen</div><div class="namepoints">23019</div></li>
-                    <li><div class="name">Gier Morrr</div><div class="namepoints">13019</div></li>
-                    <li><div class="name">Jellyfish</div><div class="namepoints">13019</div></li>
-                    <li><div class="name">Mik</div><div class="namepoints">131019</div></li>
-                    <li><div class="name">Per Jonassen</div><div class="namepoints">23019</div></li>
-                    <li><div class="name">Gier Morrr</div><div class="namepoints">13019</div></li>
-                    <li><div class="name">Per Jonassen</div><div class="namepoints">23019</div></li>
-                    <li><div class="name">Gier Morrr</div><div class="namepoints">13019</div></li>
-                    <li><div class="name">Jellyfish</div><div class="namepoints">13019</div></li>
-                    <li><div class="name">Mik</div><div class="namepoints">131019</div></li>
-                    <li><div class="name">Per Jonassen</div><div class="namepoints">23019</div></li>
-                    <li><div class="name">Gier Morrr</div><div class="namepoints">13019</div></li>
-                    <li><div class="name">Jellyfish</div><div class="namepoints">13019</div></li>
-                    <li><div class="name">Mik</div><div class="namepoints">131019</div></li>
-                    <li><div class="name">Per Jonassen</div><div class="namepoints">23019</div></li>
-                    <li><div class="name">Gier Morrr</div><div class="namepoints">13019</div></li>
-                    <li><div class="name">Per Jonassen</div><div class="namepoints">23019</div></li>
-                    <li><div class="name">Gier Morrr</div><div class="namepoints">13019</div></li>
-                    <li><div class="name">Jellyfish</div><div class="namepoints">13019</div></li>
-                    <li><div class="name">Mik</div><div class="namepoints">131019</div></li>
-                    <li><div class="name">Per Jonassen</div><div class="namepoints">23019</div></li>
-                    <li><div class="name">Gier Morrr</div><div class="namepoints">13019</div></li>
-                    <li><div class="name">Jellyfish</div><div class="namepoints">13019</div></li>
-                    <li><div class="name">Mik</div><div class="namepoints">131019</div></li>
-                    <li><div class="name">Per Jonassen</div><div class="namepoints">23019</div></li>
-                    <li><div class="name">Gier Morrr</div><div class="namepoints">13019</div></li>
-                    <li><div class="name">Per Jonassen</div><div class="namepoints">23019</div></li>
-                    <li><div class="name">Gier Morrr</div><div class="namepoints">13019</div></li>
-                    <li><div class="name">Jellyfish</div><div class="namepoints">13019</div></li>
-                    <li><div class="name">Mik</div><div class="namepoints">131019</div></li>
-                    <li><div class="name">Per Jonassen</div><div class="namepoints">23019</div></li>
-                    <li><div class="name">Gier Morrr</div><div class="namepoints">13019</div></li>
-                    <li><div class="name">Jellyfish</div><div class="namepoints">13019</div></li>
-                    <li><div class="name">Mik</div><div class="namepoints">131019</div></li>
-                    <li><div class="name">Per Jonassen</div><div class="namepoints">23019</div></li>
-                    <li><div class="name">Gier Morrr</div><div class="namepoints">13019</div></li>
+                                      
                 </ul>
             </div>
         </div>
@@ -123,6 +83,7 @@
         <script type="text/javascript" src="vendor/jquery-2.1.3.min.js"></script>
         <script type="text/javascript" src="vendor/jquery.transit.min.js"></script>    
         <script type="text/javascript" src="js/spritespinner.js"></script>
+        <script type="text/javascript" src="js/fastclick.js"></script>
         <script type="text/javascript" src="js/View.js"></script>
         <script type="text/javascript" src="js/Datastore.js"></script>
         <script type="text/javascript" src="js/GameCenter.js"></script>

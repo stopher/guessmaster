@@ -10,6 +10,8 @@ var Datastore = (function(){
     
 		NEW_GUESS_URL : BASE_URL+'guess',
 		FETCH_PLAYER_URL : BASE_URL+'player',
+		FETCH_RANK_URL : BASE_URL+'rank',
+		UPDATE_PLAYER_URL : BASE_URL+'player',
 		NEW_GAME_URL : BASE_URL+'game',
 	    FETCH_TOPSCORES_URL : BASE_URL+'topscores'
 	},
@@ -67,9 +69,10 @@ var Datastore = (function(){
 	me.setCurrentGame = function(id) {
 		currentGame = id;
 	},	
-	me.savePlayer = function(player) {
+	me.savePlayer = function(player, doneCallback) {
 		localStorage.setItem("myPlayer", JSON.stringify(player)); // local store
 		myPlayer = player;
+		doRequest(settings.UPDATE_PLAYER_URL, "POST", {"uuid":myPlayer.uuid, "name":myPlayer.name}, doneCallback);
 	},
 	me.saveGuess = function(guess, doneCallback) {
 		console.log(guess);
@@ -84,6 +87,9 @@ var Datastore = (function(){
 	me.fetchTopscores = function(doneCallback) {
 		doGetRequest(settings.FETCH_TOPSCORES_URL, "GET", null, doneCallback);
 	},
+	me.fetchRank = function(score, doneCallback) {
+		doGetRequest(settings.FETCH_RANK_URL, "GET", {"score":score}, doneCallback);
+	},	
   	me.init = function() {
 		if(localStorage.getItem("myPlayer")) {
         	myPlayer = JSON.parse(localStorage.getItem("myPlayer"));

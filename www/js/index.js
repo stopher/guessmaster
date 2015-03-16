@@ -81,6 +81,7 @@ var app = {
         }, function() {
             View.openGui();
         });
+        $(".startbtn").transition({opacity: 1});
     },
     nextGame: function() {
 
@@ -106,7 +107,10 @@ var app = {
             $(".preloader").transition({opacity:0, y:'-500px', duration: 500},function() {
                 $(".guessbtn").transition({opacity:0});
                 $(".feedback div").transition({ opacity: 1, duration: 500 }).transition({ opacity: 0 }, app.nextGame);
-                $(".points div").html(response.totalPoints);
+
+                if(response.totalPoints > 0) {
+                    $(".points div").html(response.totalPoints);                    
+                }
 
                 if(win) {
                     $(".points div").transition({scale:2}).transition({scale:1});
@@ -131,6 +135,8 @@ var app = {
             View.setGamePlaying(true);
             View.setTimeToDie(200);
             $(".points div").html("0");
+            $(".combo div").html("0");
+
             Datastore.setCurrentGame(response.id);
         };
         var player = Datastore.getMyPlayer();
@@ -141,10 +147,16 @@ var app = {
         if (typeof console == "object") {console.log("ending game");}
         
         var points = parseInt($(".points div").html());
-        if(points > 100) {
+
+        Datastore.fetchRank(points, function(response) {
+            $(".submitscore #ranking").html(response.rank);
+        });
+
+        if(points > 100) {            
             $(".submitscore").show();
         } else {
             $(".gameover").show();
+            $(".restartbtn").transition({opacity: 1});
         }
         View.setGamePlaying(false);
     },
@@ -159,9 +171,12 @@ var app = {
         
         $(".startbtn, .restartbtn, .close, .highscore, .number, .guessbtn").on("touchstart mousedown", function() {
             $(this).addClass("down");
-        });
-        $(".startbtn, .restartbtn, .close, .highscore, .number, .guessbtn").on("touchend touchcancel mouseup", function() {
-            $(this).removeClass("down");
+
+            setTimeout(function() {
+                console.log("removeClass");
+                $(".startbtn, .restartbtn, .close, .highscore, .number, .guessbtn").removeClass("down");
+            },500);
+
         });
 
         $(".number").on("click", function() {
@@ -169,10 +184,10 @@ var app = {
                 return false;
             }            
             View.lockGui();
-            $(this).transition({ scale: 1.5 }).transition({ scale: 1.0 }, function() {
+            $(this).transition({ scale: 1.5, duration: 50}).transition({ scale: 1.0, duration: 50}, function() {
                 $(".number").removeClass("active");
-                $(this).addClass("active");                
-                $(".guessbtn").transition({opacity:1}, function() {
+                $(this).addClass("active");
+                $(".guessbtn").transition({opacity:1, duration:50}, function() {
                     View.openGui();
                     View.openGuess();
                 });
@@ -194,13 +209,19 @@ var app = {
                 $(this).addClass("active");
                 $(".gameboard").transition({opacity:0, y:'-300px'});
                 $(".preloader").transition({opacity:1, y:'500px'});
-
                 app.submitGame();
             });
         });
 
         $(".highscore").on("click", function() {
-            $(".highscorelist").show();
+            Datastore.fetchTopscores(function(response) {
+                $(".highscorelist").html();
+                $.each(response,function(idx, elt) {
+                    console.log(elt);
+                    $(".thelist").append("<li><div class=\"name\">"+elt.name+"</div><div class=\"namepoints\">"+elt.points+"</div></li>");
+                });
+                $(".highscorelist").show();                
+            });
             //GameCenter.showLeaderBoard();
         });
 
@@ -214,7 +235,6 @@ var app = {
                 app.startGame();
             });
         });
-
         $(".gameover .restartbtn").on("click", function() {
             $(this).transition({opacity:0, y:'300px'}, function() {
                 $(".gameover").hide();
@@ -227,21 +247,21 @@ var app = {
                 app.startGame();
             });
         });
-
         $(".submitbtn").on("click", function() {
             $(this).transition({opacity:0}, function() {
                 var player = Datastore.getMyPlayer();
                 player.name = ""+$(".submitscore input").val();
-                Datastore.savePlayer(player);
-                $(".submitscore .restartbtn").show();
+                Datastore.savePlayer(player, function(resp) {
+                    $(".submitscore").hide();
+                    $(".introscreen").show();
+                    $(".submitbtn").transition({opacity:1});
+                });
             });
         });
 
         
         Datastore.init();
         app.resetApp();
-
-
 
         setInterval(function() {
             
@@ -261,12 +281,18 @@ var app = {
                 if(timeToDie < 60) {
                     timeline.addClass("warning");
                 }
+                if(timeToDie < 20) {
+                    timeline.addClass("ending");
+                    timeline.removeClass("warning");
+                }
             }
             timeToDie = timeToDie -1;
             View.setTimeToDie(timeToDie);
 
             if(View.getTimeToDie() < 1) {
                 app.endGame();
+                timeline.removeClass("ending");
+                timeline.removeClass("warning");
             }
         }, 500);
 
@@ -274,6 +300,12 @@ var app = {
 
         document.addEventListener('touchmove', function(e) { e.preventDefault(); }, false);
         
+        if ('addEventListener' in document) {
+            document.addEventListener('DOMContentLoaded', function() {
+                FastClick.attach(document.body);
+            }, false);
+        }
+
         if(/iP(hone|ad)/.test(window.navigator.userAgent)) {
             document.body.addEventListener('touchstart', function() {}, false);
         }
