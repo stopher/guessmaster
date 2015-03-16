@@ -331,7 +331,7 @@ p {
 
 .points {
     position: fixed;
-    top: 10px;
+    top: 20px;
     right: 10px;
     font-size: 30px;
    font-family: 'Chewy', cursive;  
@@ -381,8 +381,8 @@ p {
 }
 
 #ranking {
-    background: #FCE050;
-    font-size: 20px;
+    color: #FCE050;
+    font-size: 40px;
 }
 
 .timeline.warning {
