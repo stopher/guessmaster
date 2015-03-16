@@ -380,9 +380,9 @@ p {
     height: 8px;
 }
 
-#ranking {
-    background: #FCE050;
-    font-size: 20px;
+.ranking {
+    color: #FCE050;
+    font-size: 40px;
 }
 
 .timeline.warning {

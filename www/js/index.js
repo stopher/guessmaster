@@ -149,7 +149,7 @@ var app = {
         var points = parseInt($(".points div").html());
 
         Datastore.fetchRank(points, function(response) {
-            $(".submitscore #ranking").html(response.rank);
+            $(".submitscore .ranking").html(response.rank);
         });
 
         if(points > 1000) {
