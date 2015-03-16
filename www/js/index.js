@@ -120,14 +120,22 @@ var app = {
         };
 
         var player = Datastore.getMyPlayer();
-
+        
         // do ajax
-        Datastore.saveGuess({ "uuid": player.uuid, "selectedVal": parseInt(selected.html()), "val2": parseInt(notSelected[0].innerHTML), "val3": parseInt(notSelected[1].innerHTML)}, doneCallback);
+        Datastore.saveGuess({ "uuid": player.uuid, "gameid":Datastore.getCurrentGame(), "selectedVal": parseInt(selected.html()), "val2": parseInt(notSelected[0].innerHTML), "val3": parseInt(notSelected[1].innerHTML)}, doneCallback);
 
     },
     startGame : function() {
-        View.setGamePlaying(true);
-        View.setTimeToDie(200);
+        var callback = function(response) {
+            console.log(response);
+            View.setGamePlaying(true);
+            View.setTimeToDie(200);
+            $(".points div").html("0");
+            Datastore.setCurrentGame(response.id);
+        };
+        var player = Datastore.getMyPlayer();
+        Datastore.newGame(player.uuid, callback);
+        
     },
     endGame: function() {
         if (typeof console == "object") {console.log("ending game");}

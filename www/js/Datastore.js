@@ -3,12 +3,14 @@ var Datastore = (function(){
 		uuid:null,
 		name: ""
 	},
-	BASE_URL = "http://217.170.201.88/",
-	//BASE_URL = "http://localhost:9000/",
+	currentGame = 0,
+	//BASE_URL = "http://217.170.201.88/",
+	BASE_URL = "http://localhost:9000/",
 	settings =  {
     
 		NEW_GUESS_URL : BASE_URL+'guess',
 		FETCH_PLAYER_URL : BASE_URL+'player',
+		NEW_GAME_URL : BASE_URL+'game',
 	    FETCH_TOPSCORES_URL : BASE_URL+'topscores'
 	},
 	doRequest = function(url, type, data, doneCallback) {
@@ -59,12 +61,22 @@ var Datastore = (function(){
 		}
 		return myPlayer;
 	},
+	me.getCurrentGame = function() {
+		return currentGame;
+	},	
+	me.setCurrentGame = function(id) {
+		currentGame = id;
+	},	
 	me.savePlayer = function(player) {
 		localStorage.setItem("myPlayer", JSON.stringify(player)); // local store
 		myPlayer = player;
 	},
 	me.saveGuess = function(guess, doneCallback) {
+		console.log(guess);
     	doRequest(settings.NEW_GUESS_URL, "POST", guess, doneCallback);
+	},
+	me.newGame = function(uuid, doneCallback) {
+		doRequest(settings.NEW_GAME_URL, "POST", {"uuid":uuid}, doneCallback);
 	},
 	me.fetchPlayer = function(uuid, doneCallback) {
 		doGetRequest(settings.FETCH_PLAYER_URL, "GET", {"uuid":uuid}, doneCallback);
