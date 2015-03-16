@@ -157,6 +157,13 @@ var app = {
             s.start();
         });
         
+        $(".startbtn, .restartbtn, .close, .highscore, .number, .guessbtn").on("touchstart mousedown", function() {
+            $(this).addClass("down");
+        });
+        $(".startbtn, .restartbtn, .close, .highscore, .number, .guessbtn").on("touchend touchcancel mouseup", function() {
+            $(this).removeClass("down");
+        });
+
         $(".number").on("click", function() {
             if(View.isLocked()) {
                 return false;

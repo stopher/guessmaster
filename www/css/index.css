@@ -134,6 +134,7 @@ p {
     z-index: 4;
 }
 
+
 .number:after {
     content: "";
     display: block;
@@ -214,6 +215,16 @@ p {
     display: inline-block;
     margin: 15px;    
     opacity: 0;
+}
+
+.number.down:after,.down {
+    background: #FCE050;
+    color: #fefefe;
+}
+
+.close.down, .highscore.down {
+    background: none;
+    color: #FCE050;
 }
 
 .guessbtn div {
@@ -391,8 +402,7 @@ p {
     min-width: 320px;
     max-width: 640px;
     margin: 0px auto;   
-    overflow: scroll;
-    -webkit-overflow-scrolling: touch;     
+
 }
 
 .thelist li {
