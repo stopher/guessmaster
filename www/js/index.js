@@ -263,6 +263,7 @@ var app = {
 
         
         Datastore.init();
+        Ads.init();
         app.resetApp();
 
         setInterval(function() {
@@ -318,5 +319,7 @@ var app = {
             document.body.addEventListener('touchstart', function() {}, false);
         }
         */
+        Ads.showBannerTop();
+
     }
 };
