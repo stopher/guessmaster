@@ -390,7 +390,9 @@ p {
     font-size: 16px;
     min-width: 320px;
     max-width: 640px;
-    margin: 0px auto;    
+    margin: 0px auto;   
+    overflow: scroll;
+    -webkit-overflow-scrolling: touch;     
 }
 
 .thelist li {

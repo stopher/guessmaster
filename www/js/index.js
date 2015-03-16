@@ -141,7 +141,7 @@ var app = {
         if (typeof console == "object") {console.log("ending game");}
         
         var points = parseInt($(".points div").html());
-        if(points > 10000) {
+        if(points > 100) {
             $(".submitscore").show();
         } else {
             $(".gameover").show();
