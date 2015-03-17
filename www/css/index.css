@@ -331,10 +331,10 @@ p {
 
 .points {
     position: fixed;
-    top: 20px;
-    right: 10px;
+    top: 25px;
+    right: 20px;
     font-size: 30px;
-   font-family: 'Chewy', cursive;  
+    font-family: 'Chewy', cursive;  
     color: #006699; 
 }
 
@@ -344,7 +344,7 @@ p {
 
 .combo {
     position: fixed;
-    bottom: 40px;
+    bottom: 45px;
     right: 20px;
     font-size: 30px;
     font-family: 'Chewy', cursive;
@@ -403,10 +403,10 @@ p {
 }
 
 .highscore {
-    width: 30px;
-    height: 30px;
+    width: 60px;
+    height: 60px;
     position: fixed;
-    bottom: 55px;
+    bottom: 45px;
     left: 30px;
     color: #fefefe;
 }
