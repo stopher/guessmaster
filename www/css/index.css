@@ -60,7 +60,7 @@ body {
 }
 
 p {
-    padding: 20px;
+    padding: 10px;
 }
 
 /* Portrait layout (default) */
@@ -325,12 +325,16 @@ p {
     font-family: 'Chewy', cursive;
     font-size: 30px;
     text-align: center;
-    padding: 30px;
+    padding: 20px;
     color: #fefefe;
+}
+h3 {
+    padding: 2px;
+    margin: 0px;
 }
 
 .points {
-    position: fixed;
+    position: absolute;
     top: 25px;
     right: 20px;
     font-size: 30px;
@@ -343,7 +347,7 @@ p {
 }
 
 .combo {
-    position: fixed;
+    position: absolute;
     bottom: 45px;
     right: 20px;
     font-size: 30px;
@@ -372,7 +376,7 @@ p {
 }
 
 .timeline {
-    position: fixed;
+    position: absolute;
     bottom: 0px;
     left: 0px;
     width: 100%;
@@ -405,7 +409,7 @@ p {
 .highscore {
     width: 60px;
     height: 60px;
-    position: fixed;
+    position: absolute;
     bottom: 45px;
     left: 30px;
     color: #fefefe;
