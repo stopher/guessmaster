@@ -149,10 +149,10 @@ var app = {
         var points = parseInt($(".points div").html());
 
         Datastore.fetchRank(points, function(response) {
-            $(".submitscore #ranking").html(response.rank);
+            $(".submitscore .ranking").html(response.rank);
         });
 
-        if(points > 100) {            
+        if(points > 1000) {
             $(".submitscore").show();
         } else {
             $(".gameover").show();
@@ -169,6 +169,7 @@ var app = {
             s.start();
         });
         
+        /*
         $(".startbtn, .restartbtn, .close, .highscore, .number, .guessbtn").on("touchstart mousedown", function() {
             $(this).addClass("down");
 
@@ -178,6 +179,7 @@ var app = {
             },500);
 
         });
+        */
 
         $(".number").on("click", function() {
             if(View.isLocked()) {
@@ -215,7 +217,7 @@ var app = {
 
         $(".highscore").on("click", function() {
             Datastore.fetchTopscores(function(response) {
-                $(".highscorelist").html();
+                $(".thelist").html("");
                 $.each(response,function(idx, elt) {
                     console.log(elt);
                     $(".thelist").append("<li><div class=\"name\">"+elt.name+"</div><div class=\"namepoints\">"+elt.points+"</div></li>");
@@ -233,6 +235,7 @@ var app = {
             $(".startbtn").transition({opacity:0, y:'300px'}, function() {
                 $(".introscreen").hide();
                 app.startGame();
+                 $(".startbtn").transition({opacity:1, y:'0px'});
             });
         });
         $(".gameover .restartbtn").on("click", function() {
@@ -261,6 +264,7 @@ var app = {
 
         
         Datastore.init();
+        Ads.init();
         app.resetApp();
 
         setInterval(function() {
@@ -298,6 +302,16 @@ var app = {
 
         //GameCenter.authUser();
 
+        Datastore.fetchTopscores(function(response) {
+            $(".top5").html("");
+            if(response) {
+                var top5 = response.slice(0, 5);
+                $.each(top5,function(idx, elt) {
+                    $(".top5").append("<li><div class=\"name\">"+elt.name+"</div><div class=\"namepoints\">"+elt.points+"</div></li>");
+                });   
+            }                
+        });
+
         document.addEventListener('touchmove', function(e) { e.preventDefault(); }, false);
         
         FastClick.attach(document.body);
@@ -306,5 +320,7 @@ var app = {
             document.body.addEventListener('touchstart', function() {}, false);
         }
         */
+        Ads.showBannerBottom();
+
     }
 };
