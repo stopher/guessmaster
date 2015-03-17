@@ -348,7 +348,7 @@ h3 {
 
 .combo {
     position: absolute;
-    bottom: 55px;
+    bottom: 65px;
     right: 20px;
     font-size: 30px;
     font-family: 'Chewy', cursive;
@@ -377,7 +377,7 @@ h3 {
 
 .timeline {
     position: absolute;
-    bottom: 58px;
+    bottom: 50px;
     left: 0px;
     width: 100%;
     background: #FCE050;
@@ -410,7 +410,7 @@ h3 {
     width: 60px;
     height: 60px;
     position: absolute;
-    bottom: 55px;
+    bottom: 65px;
     left: 30px;
     color: #fefefe;
 }
