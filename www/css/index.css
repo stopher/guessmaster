@@ -348,7 +348,7 @@ h3 {
 
 .combo {
     position: absolute;
-    bottom: 65px;
+    bottom: 12%;
     right: 20px;
     font-size: 30px;
     font-family: 'Chewy', cursive;
@@ -377,7 +377,7 @@ h3 {
 
 .timeline {
     position: absolute;
-    bottom: 50px;
+    bottom: 10%;
     left: 0px;
     width: 100%;
     background: #FCE050;
@@ -410,7 +410,7 @@ h3 {
     width: 60px;
     height: 60px;
     position: absolute;
-    bottom: 65px;
+    bottom: 12%;
     left: 30px;
     color: #fefefe;
 }
@@ -479,3 +479,21 @@ input {
     padding: 10px;
     background: cornsilk;
 }
+
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px)  { 
+    .highscore {
+        position: absolute;
+        bottom: 120px;
+    }
+
+    .combo {
+        position: absolute;
+        bottom: 130px;
+    }
+
+    .timeline {
+        position: absolute;
+        bottom: 100px;
+    }
+}
+
